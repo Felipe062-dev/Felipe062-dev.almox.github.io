@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Almoxarifado</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Almoxarifado</h1>
+  
+  <div class="add-product">
+    <input type="text" id="product-id" placeholder="ID do Produto" />
+    <input type="text" id="product-name" placeholder="Nome do Produto" />
+    <input type="number" id="product-quantity" placeholder="Quantidade" min="1" />
+    <button onclick="addProduct()">Adicionar Produto</button>
+  </div>
+
+  <div id="product-list"></div>
+
+  <button onclick="openReportPage()" class="report-button">Imprimir Relatório</button>
+
+  <script src="script.js"></script>
+</body>
+</html>

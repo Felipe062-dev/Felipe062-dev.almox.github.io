@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório de Almoxarifado</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+  <h1>Relatório de Produtos</h1>
+
+  <div id="report-list"></div>
+
+  <!-- Botão para Imprimir Relatório -->
+  <button onclick="window.print()" class="print-button">Imprimir</button>
+
+  <script>
+    // Carrega produtos e exibe na página de relatório
+    document.addEventListener("DOMContentLoaded", () => {
+      const products = JSON.parse(localStorage.getItem("products")) || [];
+      const reportList = document.getElementById("report-list");
+
+      if (products.length === 0) {
+        reportList.innerHTML = "<p>Nenhum produto cadastrado.</p>";
+      } else {
+        let totalQuantity = 0;
+        const table = document.createElement("table");
+        table.innerHTML = `
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Quantidade</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${products.map(product => {
+              totalQuantity += product.quantity;
+              return `
+                <tr>
+                  <td>${product.id}</td>
+                  <td>${product.name}</td>
+                  <td>${product.quantity}</td>
+                </tr>`;
+            }).join('')}
+          </tbody>
+          
+        `;
+        reportList.appendChild(table);
+      }
+    });
+  </script>
+</body>
+</html>
