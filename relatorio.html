@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Caixa de Pergunta</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f2f5;
+    }
 
+    .caixa {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      padding: 30px;
+      text-align: center;
+      position: relative;
+    }
+
+    .botoes {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      transition: 0.2s ease;
+    }
+
+    #sim {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    #nao {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div class="caixa">
+    <h2>Da o c# pra mim ? 🥺</h2>
+    <div class="botoes">
+      <button id="sim">Sim</button>
+      <button id="nao">Não</button>
+    </div>
+  </div>
+
+  <script>
+    const botaoNao = document.getElementById('nao');
+    const caixa = document.querySelector('.caixa');
+
+    botaoNao.addEventListener('mouseenter', () => {
+      const caixaRect = caixa.getBoundingClientRect();
+      const maxX = window.innerWidth - 150;
+      const maxY = window.innerHeight - 100;
+
+      const randomX = Math.random() * (maxX - caixaRect.left);
+      const randomY = Math.random() * (maxY - caixaRect.top);
+
+      botaoNao.style.left = `${randomX}px`;
+      botaoNao.style.top = `${randomY}px`;
+    });
+
+    document.getElementById("sim").addEventListener("click", () => {
+      window.location.href = "https://www.youtube.com/shorts/2Vvlr4CZNMo";
+    });
+  </script>
+</body>
+</html>
